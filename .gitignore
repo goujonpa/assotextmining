@@ -1,3 +1,14 @@
+# Don't include the .json files as they contain some privacy informations on fb
+# users
+*.json
+
+# Don't include the .txt files as they contain some privacy informations on fb
+# users
+*.txt
+
+# Don't include vim .swp files 
+*.swp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
