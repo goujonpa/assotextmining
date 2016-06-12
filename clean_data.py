@@ -1,5 +1,7 @@
 # Helper to clean our data
 
+begin_page = 1
+
 import os
 import json
 
@@ -10,11 +12,11 @@ with open("fb_output.json", "r") as data_file:
 
 # For data in the dataset display it to the user in a formatted way so that the
 # user can choose whether that's associative communication or not
-for i in range(0, (len(data) - 1)):
+for i in range(begin_page, len(data)):
     associative_cleaned = list()
     other_cleaned = list()
     # For each pages
-    for j in range(0, (len(data[str(i)]) - 1)):
+    for j in range(0, len(data[str(i)])):
         # For each messages in each pages
 
         # clean console
