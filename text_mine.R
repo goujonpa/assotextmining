@@ -8,7 +8,11 @@ source("replacePunctuation.R");
 # custom ignore words function
 source("ignoredWords.R");
 
-cname <- file.path("~", "workspace", "sc21", "corpus");  
+# tutoiement and vouvoiement custom functions
+source("tutoiement.R");
+source("vouvoiement.R");
+
+cname <- file.path("~", "workspace", "sc21", "Corpus");  
 
 # ===== DATA PREPROCESSING =====
 library(tm);
@@ -19,8 +23,12 @@ docs <- Corpus(DirSource(cname));
 docs <- tm_map(docs, replacePunctuation);
 # ignore some words
 # TO DO: do the same without ignoring the words !!!!!!!
-
 docs <- tm_map(docs, ignoredWords);
+
+# check for the clash between "tu" and "vous"
+docs<- tm_map(docs, tagTu); 
+docs<- tm_map(docs, tagVous); 
+
 
 # To remove email punctuation
 #for (j in seq(docs))  {   
@@ -33,7 +41,7 @@ docs <- tm_map(docs, removeNumbers);
 # note : I used the simple tolower at first but it messed up my corpus object
 docs <- tm_map(docs, content_transformer(tolower));
 # remove french stopwords
-docs <- tm_map(docs, removeWords, stopwords("french"));
+#docs <- tm_map(docs, removeWords, stopwords("french"));
 
 #Combining words that should stay together
 #If you wish to preserve a concept is only apparent as a collection of two or more words, then you can combine them or reduce them to a meaningful acronym before you begin the analysis. Here, I am using examples that are particular to qualitative data analysis.
@@ -48,7 +56,7 @@ docs <- tm_map(docs, removeWords, stopwords("french"));
 
 library(SnowballC);
 # getStemLanguages() : allows to see the stem languages
-docs <- tm_map(docs, stemDocument, language="french");
+#docs <- tm_map(docs, stemDocument, language="french");
 
 # strip useless whitespaces
 docs <- tm_map(docs, stripWhitespace);

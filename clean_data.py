@@ -1,6 +1,6 @@
 # Helper to clean our data
 
-begin_page = 1
+begin_page = 0
 
 import os
 import json
