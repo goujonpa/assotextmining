@@ -1,5 +1,6 @@
 # assotextmining - Text mining project using the Facebook Graph API, Python and R
 
+
 School text mining project for a Linguistics course using the Facebook Graph API, Python language and R.
 
 ## Context
